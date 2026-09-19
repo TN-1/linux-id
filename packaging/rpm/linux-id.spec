@@ -79,3 +79,6 @@ install -Dpm 0644 %{SOURCE3} %{buildroot}%{_modulesloaddir}/uhid.conf
 %changelog
 * Tue Aug 04 2026 Hamish West <hamish@hamishwest.xyz> - 0.2.3-1
 - Initial RPM packaging for Fedora COPR
+* Tue Aug 04 2026 Hamish West <hamish@hamishwest.xyz> - 0.2.4
+- Bump deps
+
