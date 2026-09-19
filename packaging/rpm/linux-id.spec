@@ -1,6 +1,6 @@
 Name:           linux-id
 Version:        0.2.4
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        FIDO token implementation for Linux using TPM
 
 %global debug_package %{nil}
@@ -59,14 +59,13 @@ install -Dpm 0644 %{SOURCE2} %{buildroot}%{_udevrulesdir}/60-%{name}-fido-tpm.ru
 install -Dpm 0644 %{SOURCE3} %{buildroot}%{_modulesloaddir}/uhid.conf
 
 %post
-%udev_rules_posttrans
 %systemd_user_post %{name}.service
 
 %preun
 %systemd_user_preun %{name}.service
 
 %postun
-%udev_rules_postun
+%systemd_user_postun %{name}.service
 
 %files
 %license LICENSE
@@ -77,8 +76,9 @@ install -Dpm 0644 %{SOURCE3} %{buildroot}%{_modulesloaddir}/uhid.conf
 %{_modulesloaddir}/uhid.conf
 
 %changelog
+* Sun Sep 20 2026 Hamish West <hamish@hamishwest.xyz> - 0.2.4-2
+- Fix DNF error
+* Sun Sep 20 2026 Hamish West <hamish@hamishwest.xyz> - 0.2.4-1
+- Bump deps
 * Tue Aug 04 2026 Hamish West <hamish@hamishwest.xyz> - 0.2.3-1
 - Initial RPM packaging for Fedora COPR
-* Tue Aug 04 2026 Hamish West <hamish@hamishwest.xyz> - 0.2.4
-- Bump deps
-
