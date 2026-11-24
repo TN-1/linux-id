@@ -1,6 +1,6 @@
 Name:           linux-id
-Version:        0.2.4
-Release:        2%{?dist}
+Version:        0.2.5
+Release:        1%{?dist}
 Summary:        FIDO token implementation for Linux using TPM
 
 %global debug_package %{nil}
@@ -12,7 +12,7 @@ Source1:        linux-id.service
 Source2:        60-linux-id-fido-tpm.rules
 Source3:        uhid.conf
 
-BuildRequires:  golang >= 1.21
+BuildRequires:  golang >= 1.26
 BuildRequires:  systemd-rpm-macros
 BuildRequires:  go-rpm-macros
 BuildRequires:  tpm2-tss-devel
@@ -76,6 +76,8 @@ install -Dpm 0644 %{SOURCE3} %{buildroot}%{_modulesloaddir}/uhid.conf
 %{_modulesloaddir}/uhid.conf
 
 %changelog
+* Wed Nov 25 2026 Hamish West <hamish@hamishwest.xyz> - 0.2.5-1
+- Update to 0.2.5
 * Sun Sep 20 2026 Hamish West <hamish@hamishwest.xyz> - 0.2.4-2
 - Fix DNF error
 * Sun Sep 20 2026 Hamish West <hamish@hamishwest.xyz> - 0.2.4-1
